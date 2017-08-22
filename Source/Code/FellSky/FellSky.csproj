@@ -47,10 +47,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\AdvSpriteRenderer.cs" />
+    <Compile Include="Components\Bullet.cs" />
     <Compile Include="Components\GeneratedNebula.cs" />
-    <Compile Include="Components\UVSphereRenderer.cs" />
+    <Compile Include="Components\Health.cs" />
+    <Compile Include="Components\PlayerShipController.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Events\DamageEvent.cs" />
+    <Compile Include="Events\DeathEvent.cs" />
     <Compile Include="Events\IEvent.cs" />
     <Compile Include="FellSkyCorePlugin.cs" />
+    <Compile Include="Graphics\VertexFormats.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Components\Ship.cs" />
     <Compile Include="Resources\Sprite.cs" />

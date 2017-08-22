@@ -8,6 +8,7 @@ using FellSky.Events;
 
 namespace FellSky.Components
 {
+    [Duality.Editor.EditorHintCategory("Behavior")]
     public class Health : Component, IEventHandler<DamageEvent>
     {
         public float CurrentHealth { get; set; } = 100;

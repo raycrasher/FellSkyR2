@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace FellSky.Components
 {
+    [Duality.Editor.EditorHintCategory("Graphics")]
     [RequiredComponent(typeof(SpriteRenderer))]
     public class GeneratedNebula: Component
     {

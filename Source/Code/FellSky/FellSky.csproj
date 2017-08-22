@@ -36,21 +36,39 @@
     <Reference Include="DualityPrimitives">
       <HintPath>..\..\..\DualityPrimitives.dll</HintPath>
     </Reference>
+    <Reference Include="Steer2d">
+      <HintPath>..\..\..\Plugins\Steer2d.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\AmmoProvider.cs" />
     <Compile Include="Components\AdvSpriteRenderer.cs" />
-    <Compile Include="Components\Bullet.cs" />
+    <Compile Include="Components\CameraZoom.cs" />
+    <Compile Include="Components\FollowBehavior.cs" />
     <Compile Include="Components\GeneratedNebula.cs" />
     <Compile Include="Components\Health.cs" />
-    <Compile Include="Components\PlayerShipController.cs" />
+    <Compile Include="Components\MouseFollow.cs" />
+    <Compile Include="Components\Projectiles\Beam.cs" />
+    <Compile Include="Components\Projectiles\BeamRenderer.cs" />
+    <Compile Include="Components\Projectiles\Bullet.cs" />
+    <Compile Include="Components\Projectiles\Missile.cs" />
+    <Compile Include="Components\Projectiles\Projectile.cs" />
+    <Compile Include="Components\Projectiles\Rocket.cs" />
+    <Compile Include="Components\Ships\Hardpoint.cs" />
+    <Compile Include="Components\Ships\Hull.cs" />
+    <Compile Include="Components\Ships\PlayerShipController.cs" />
+    <Compile Include="Components\Ships\Ship.cs" />
+    <Compile Include="Components\Ships\ShipAi.cs" />
+    <Compile Include="Components\Ships\ShipWeapon.cs" />
+    <Compile Include="Components\Ships\Thruster.cs" />
+    <Compile Include="Components\Ships\Turret.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Events\DamageEvent.cs" />
     <Compile Include="Events\DeathEvent.cs" />
@@ -58,12 +76,13 @@
     <Compile Include="FellSkyCorePlugin.cs" />
     <Compile Include="Graphics\VertexFormats.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Components\Ship.cs" />
+    <Compile Include="Resources\AmmoType.cs" />
+    <Compile Include="Resources\ItemType.cs" />
     <Compile Include="Resources\Sprite.cs" />
+    <Compile Include="Utilities.cs" />
+    <Compile Include="Common\Steering.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Ships\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>mkdir "$(SolutionDir)../../Plugins"

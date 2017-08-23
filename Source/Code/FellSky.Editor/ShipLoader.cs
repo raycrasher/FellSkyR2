@@ -165,7 +165,7 @@ namespace FellSky.Editor
         }
         
 
-        private static CircleShapeInfo CloneAndTransformShape(CircleShapeInfo circle, Transform xform, Vector2 spriteSize, SpriteRenderer.FlipMode flip)
+        public static CircleShapeInfo CloneAndTransformShape(CircleShapeInfo circle, Transform xform, Vector2 spriteSize, SpriteRenderer.FlipMode flip)
         {
             MathF.GetTransformDotVec(xform.Angle, xform.Scale, out var xDot, out var yDot);
             Vector2 tmpPos = circle.Position * PhysicsUnit.LengthToDuality - spriteSize/2;
@@ -183,7 +183,7 @@ namespace FellSky.Editor
             return shape;
         }
 
-        private static PolyShapeInfo CloneAndTransformShape(PolyShapeInfo poly, Transform xform, Vector2 spriteSize, SpriteRenderer.FlipMode flip)
+        public static PolyShapeInfo CloneAndTransformShape(PolyShapeInfo poly, Transform xform, Vector2 spriteSize, SpriteRenderer.FlipMode flip)
         {
             MathF.GetTransformDotVec(xform.Angle, xform.Scale, out var xDot, out var yDot);
             var shape = new PolyShapeInfo();

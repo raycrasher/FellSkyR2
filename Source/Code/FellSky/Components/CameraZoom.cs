@@ -26,7 +26,7 @@ namespace FellSky.Components
         public void OnUpdate()
         {
             
-            var delta = DualityApp.Mouse.WheelSpeedPrecise * Sensitivity;
+            var delta = MathF.Clamp(DualityApp.Mouse.WheelSpeedPrecise,-1,1) * Sensitivity;
             if (delta != 0f)
             {
                 _lastZoom = _zoom;

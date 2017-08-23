@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace FellSky.Components.Ships
 {
     [Duality.Editor.EditorHintCategory("Ship")]
-    public class Thruster : Component, ICmpUpdatable
+    public class Thruster : Component, ICmpUpdatable, ICmpEditorUpdatable
     {
         public Vector2 ScaleIdle { get; set; }
         public Vector2 ScaleThrust { get; set; }
@@ -23,9 +23,9 @@ namespace FellSky.Components.Ships
         private float _thrustAmount = 0, _boostAmount = 0;
 
         private bool _isThrusting;
-        
 
-        void ICmpUpdatable.OnUpdate()
+
+        public void OnUpdate()
         {
             var ship = GameObj.Parent?.GetComponent<Ship>();
             var sprite = GameObj.GetComponent<AdvSpriteRenderer>();
@@ -62,9 +62,9 @@ namespace FellSky.Components.Ships
                 var dot = Vector2.Dot(ship.ThrustVector.Normalized, -xform.Right.Xy);
                 if (dot > 0.7f)
                     _isThrusting = true;
-                else if(dot <- 0.2f)
+                else if (dot < -0.2f)
                     _isThrusting = false;
-                
+
             }
             //RampUpTime = 0.4;
             //RampDownTime = 0.4f;
@@ -85,6 +85,14 @@ namespace FellSky.Components.Ships
             flicker = 1 + (MathF.Sin(time * 1.5f % MathF.Pi) * FlickerFactor);
             var thrust = Vector2.Lerp(ScaleThrust, ScaleBoost, _boostAmount);
             sprite.Scale = Vector2.Lerp(ScaleIdle, thrust, _thrustAmount) * flicker;
+
+            if (EngineGlow != null)
+            {
+                var color = EngineGlow.Color;
+                color.A = (byte)MathF.Clamp(_thrustAmount * 255, 0, 255);
+                EngineGlow.Color = color;
+            }
         }
+        
     }
 }

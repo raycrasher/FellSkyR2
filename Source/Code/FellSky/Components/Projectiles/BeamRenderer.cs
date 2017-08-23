@@ -11,6 +11,7 @@ using FellSky.Resources;
 
 namespace FellSky.Components.Projectiles
 {
+    [Duality.Editor.EditorHintCategory("Graphics")]
     public class BeamRenderer : Renderer
     {
         [DontSerialize]

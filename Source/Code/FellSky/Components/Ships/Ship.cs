@@ -7,14 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FellSky.Events;
 
 namespace FellSky.Components.Ships
 {
     [Duality.Editor.EditorHintCategory("Ship")]
-    public class Ship : Component, ICmpUpdatable, ICmpInitializable, ICmpCollisionListener
+    public class Ship : Component, ICmpUpdatable, ICmpInitializable, IEventHandler<DamageEvent>
     {
-        [DontSerialize]
-        private RigidBody _rigidBody;
         [DontSerialize]
         private List<ShipWeapon> _weapons;
         private ColorRgba _baseColor = new ColorRgba(222,180,180);
@@ -96,7 +95,6 @@ namespace FellSky.Components.Ships
         {
             if(context == InitContext.Activate)
             {
-                _rigidBody = GameObj.GetComponent<RigidBody>();
                 SetHullColor(HullColorType.Base, BaseColor);
                 SetHullColor(HullColorType.Trim, TrimColor);
             }
@@ -120,6 +118,7 @@ namespace FellSky.Components.Ships
 
         private void DoControls()
         {
+            var rigidBody = GameObj.GetComponent<RigidBody>();
             var local = GameObj.Transform.GetLocalVector(ThrustVector);
 
             var force = new Vector2(
@@ -134,55 +133,25 @@ namespace FellSky.Components.Ships
             if (IsBoosting) force *= BoostMultiplier;
 
             if (force.LengthSquared > 0)
-                _rigidBody.ApplyLocalForce(force);
+                rigidBody.ApplyLocalForce(force);
 
             Acceleration = force;
 
             switch (TurnDirection)
             {
                 case Rotation.CCW:
-                    _rigidBody.ApplyLocalForce(-TurnSpeed * 40);
+                    rigidBody.ApplyLocalForce(-TurnSpeed * 40);
                     break;
                 case Rotation.CW:
-                    _rigidBody.ApplyLocalForce(TurnSpeed * 40);
+                    rigidBody.ApplyLocalForce(TurnSpeed * 40);
                     break;
             }
         }
 
-        void ICmpCollisionListener.OnCollisionBegin(Component sender, CollisionEventArgs args)
+        void IEventHandler<DamageEvent>.HandleEvent(object source, DamageEvent data)
         {
-
-        }
-
-        void ICmpCollisionListener.OnCollisionEnd(Component sender, CollisionEventArgs args)
-        {
-            
-        }
-
-        void ICmpCollisionListener.OnCollisionSolve(Component sender, CollisionEventArgs args)
-        {
-            var ship = args.CollideWith.GetComponent<Ship>();
-            if (ship != null)
-            {
-                var impulse = args.CollisionData.NormalImpulse + args.CollisionData.TangentImpulse;
-                if (args is RigidBodyCollisionEventArgs rgc)
-                {
-                    if (rgc.MyShape.UserData is Hull hull)
-                    {
-                        hull.OnCollision(sender, rgc);
-                    }
-                }
-            }
-            else
-            {
-                if (args is RigidBodyCollisionEventArgs rgc)
-                {
-                    if (rgc.MyShape.UserData is Hull hull)
-                    {
-                        hull.OnCollision(sender, rgc);
-                    }
-                }
-            }
+            if (data.Target != null)
+                data.Target.FireEvent(source, data);
         }
     }
 }

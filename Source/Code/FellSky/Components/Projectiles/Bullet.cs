@@ -3,13 +3,8 @@ using Duality.Components;
 using Duality.Components.Physics;
 using Duality.Drawing;
 using Duality.Resources;
-using FellSky.Components;
-using FellSky.Components.Ships;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FellSky.Events;
 
 namespace FellSky.Components.Projectiles
 {
@@ -25,6 +20,7 @@ namespace FellSky.Components.Projectiles
         public float Lifetime { get; set; } = 1;
         public float Age { get; set; }
         public float FadeoutPercent { get; set; } = 0.95f;
+        public float Damage { get; set; } = 10;
 
         public ContentRef<Prefab> HitExplosion { get; set; }
 
@@ -35,17 +31,19 @@ namespace FellSky.Components.Projectiles
                 var xform = GameObj.Transform;
                 HitExplosion.Res.Instantiate(xform.Pos, xform.Angle);
             }
-            var ship = args.CollideWith.GetComponent<Ship>();
-            if (ship != null)
+            var evt = new DamageEvent
             {
-                
-            }
-            //this.GameObj.DisposeLater();
+                Damage = Damage,
+                CollisionData = args
+            };
+            if(args is RigidBodyCollisionEventArgs rb)            
+                evt.Target = rb.OtherShape.UserData as GameObject;
+            
+            args.CollideWith.FireEvent(this, evt);
         }
 
         public void OnCollisionEnd(Component sender, CollisionEventArgs args)
         {
-            
         }
 
         public void OnCollisionSolve(Component sender, CollisionEventArgs args)

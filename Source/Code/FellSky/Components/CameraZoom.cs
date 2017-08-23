@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FellSky.Components
 {
-    [Duality.Editor.EditorHintCategory("Behavior")]
+    [Duality.Editor.EditorHintCategory("Behaviors")]
     [RequiredComponent(typeof(Camera))]
     [RequiredComponent(typeof(Transform))]
     public class CameraZoom : Component, ICmpUpdatable, ICmpInitializable

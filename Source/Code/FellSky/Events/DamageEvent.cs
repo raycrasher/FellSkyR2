@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Duality;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,5 +10,7 @@ namespace FellSky.Events
     public class DamageEvent: IEvent
     {
         public float Damage;
+        public CollisionEventArgs CollisionData;
+        public GameObject Target;
     }
 }

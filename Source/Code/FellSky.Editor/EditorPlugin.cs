@@ -72,6 +72,13 @@ namespace FellSky.Editor
                 ActionHandler = (o, e) => ShipLoader.LoadShip()
             });
 
+            shipMenu.AddItem(new MenuModelItem {
+                Name = "Show Thrusters as Active",
+                Checkable = true,
+                Checked = false,
+                ActionHandler = (o, e) => 
+                    Components.Ships.Thruster.Editor_ShowAsThrusting = ((MenuModelItem)o).Checked
+            });
         }
 
         public SpriteViewer RequestSpriteEditorView()

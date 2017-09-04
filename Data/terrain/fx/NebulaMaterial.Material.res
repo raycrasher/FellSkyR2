@@ -2,12 +2,12 @@
   <assetInfo />
   <info dataType="Struct" type="Duality.Drawing.BatchInfo" id="427169525">
     <dirtyFlag dataType="Enum" type="Duality.Drawing.BatchInfo+DirtyFlag" name="None" value="0" />
-    <hashCode dataType="Int">-1400669907</hashCode>
+    <hashCode dataType="Int">1550917933</hashCode>
     <mainColor dataType="Struct" type="Duality.Drawing.ColorRgba">
       <A dataType="Byte">103</A>
-      <B dataType="Byte">213</B>
-      <G dataType="Byte">0</G>
-      <R dataType="Byte">255</R>
+      <B dataType="Byte">237</B>
+      <G dataType="Byte">255</G>
+      <R dataType="Byte">0</R>
     </mainColor>
     <technique dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.DrawTechnique]]">
       <contentPath dataType="String">Data\terrain\fx\NebulaDrawTechnique.DrawTechnique.res</contentPath>
@@ -30,7 +30,7 @@
         <falloff dataType="Array" type="System.Single[]" id="1885627030">4</falloff>
         <density dataType="Array" type="System.Single[]" id="766962944">0.1</density>
         <scale dataType="Array" type="System.Single[]" id="1352645666">0.002</scale>
-        <offset dataType="Array" type="System.Single[]" id="3754462812">20, 20</offset>
+        <offset dataType="Array" type="System.Single[]" id="3754462812">1, 1</offset>
       </body>
     </uniforms>
   </info>

@@ -569,21 +569,6 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.Properties.Resources.IconZoomDefault">
-            <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.Properties.Resources.IconZoomIn">
-            <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.Properties.Resources.IconZoomOut">
-            <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
-            </summary>
-        </member>
         <member name="P:Duality.Editor.Plugins.Tilemaps.Properties.Resources.TilesetViewBrightness">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
@@ -1294,28 +1279,11 @@
             [GET] The number of displayed tiles in X and Y direction.
             </summary>
         </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetView.TileSizeFactor">
-            <summary>
-            [GET / SET] The display size multiplier of the tiles relative to their original pixel size.
-            Constrained by <see cref="F:Duality.Editor.Plugins.Tilemaps.TilesetView.MinDisplayedSize"/> and <see cref="F:Duality.Editor.Plugins.Tilemaps.TilesetView.MaxDisplayedSize"/> constants.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.Tilemaps.TilesetView.SpecialZoomLevel">
-            <summary>
-            [GET] Returns <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetView.TileSizeFactor"/>'s relation to the size limits.
-            </summary>
-        </member>
         <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.InvalidateTileset">
             <summary>
             Invalidates the assigned <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> and forces re-generating its
             visual representation inside this <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetView"/>. This is only
             necessary if the <see cref="T:Duality.Plugins.Tilemaps.Tileset"/> has changed outside the <see cref="T:Duality.Editor.Plugins.Tilemaps.TilesetView"/>.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.ResetZoom">
-            <summary>
-            Resets <see cref="P:Duality.Editor.Plugins.Tilemaps.TilesetView.TileSizeFactor"/> to the default for the currently 
-            displayed <see cref="T:Duality.Plugins.Tilemaps.Tileset"/>.
             </summary>
         </member>
         <member name="M:Duality.Editor.Plugins.Tilemaps.TilesetView.PickTileIndexAt(System.Int32,System.Int32,System.Boolean,System.Boolean)">

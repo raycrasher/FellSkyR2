@@ -1054,502 +1054,6 @@
             <param name="context"></param>
             <returns></returns>
         </member>
-        <member name="T:Duality.Editor.PackageManagement.PackageDependencyWalker">
-            <summary>
-            Implements an algorithm to walk a package dependency graph and determine
-            a packages transitive dependencies.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageDependencyWalker.VisitedPackages">
-            <summary>
-            [GET] Enumerates all packages that were visited in all walk operations 
-            since the last <see cref="M:Duality.Editor.PackageManagement.PackageDependencyWalker.Clear"/>.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageDependencyWalker.Clear">
-            <summary>
-            Resets the algorithm and clears all previous results, as well as the 
-            internal <see cref="M:Duality.Editor.PackageManagement.PackageDependencyWalker.IgnorePackage(System.String)"/> blacklist.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageDependencyWalker.IgnorePackage(System.String)">
-            <summary>
-            Configures the algorithm to not visit packages with the specified ID while
-            exploring the graph.
-            </summary>
-            <param name="id"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageDependencyWalker.WalkGraph(Duality.Editor.PackageManagement.PackageInfo)">
-            <summary>
-            Walks the specified packages dependency graph and adds 
-            new findings to the result list.
-            </summary>
-            <param name="package"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageDependencyWalker.WalkGraph(Duality.Editor.PackageManagement.PackageName)">
-            <summary>
-            Walks the specified packages dependency graph and adds 
-            new findings to the result list.
-            </summary>
-            <param name="packageName"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageDependencyWalker.WalkGraph(System.Collections.Generic.IEnumerable{Duality.Editor.PackageManagement.PackageInfo})">
-            <summary>
-            Walks the specified packages dependency graphs and adds 
-            new findings to the result list.
-            </summary>
-            <param name="packages"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageDependencyWalker.WalkGraph(System.Collections.Generic.IEnumerable{Duality.Editor.PackageManagement.PackageName})">
-            <summary>
-            Walks the specified packages dependency graphs and adds 
-            new findings to the result list.
-            </summary>
-            <param name="packageNames"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageDependencyWalker.GetDependencyCount(Duality.Editor.PackageManagement.PackageName)">
-            <summary>
-            Retrieves the transitive dependency count of the specified package.
-            </summary>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Duality.Editor.PackageManagement.PackageCache">
-            <summary>
-            Caches information about remote package repositories.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageCache.Clear">
-            <summary>
-            Clears the cache to allow querying updated information from the repository.
-            
-            Does not clear the internal mapping from fully qualified package names to
-            actual packages, as the repository is still the same and NuGet packages 
-            are read-only after publish.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageCache.GetLatestDualityPackages">
-            <summary>
-            Enumerates the latest available Duality packages in the remote repository.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageCache.GetPackage(Duality.Editor.PackageManagement.PackageName)">
-            <summary>
-            Retrieves information about the specified package.
-            </summary>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageCache.GetNuGetPackage(Duality.Editor.PackageManagement.PackageName)">
-            <summary>
-            Retrieves a NuGet package based on the specified name.
-            </summary>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Duality.Editor.PackageManagement.PackageManagerEnvironment">
-            <summary>
-            Describes the local working environment of a <see cref="T:Duality.Editor.PackageManagement.PackageManager"/>.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageManagerEnvironment.RootPath">
-            <summary>
-            [GET] The root path to work in, which is usually the Duality project folder.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageManagerEnvironment.TargetDataPath">
-            <summary>
-            [GET] The path where <see cref="T:Duality.Resource"/> package contents are copied to after installation.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageManagerEnvironment.TargetSourcePath">
-            <summary>
-            [GET] The path where source code package contents are copied to after installation.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageManagerEnvironment.TargetPluginPath">
-            <summary>
-            [GET] The path where plugin package contents are copied to after installation.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageManagerEnvironment.RepositoryPath">
-            <summary>
-            [GET] The path of the local package repository where packages will be installed to by NuGet.
-            After NuGet completed its installation, Duality will take care of copying each file to
-            its intended destination.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageManagerEnvironment.ConfigFilePath">
-            <summary>
-            [GET] The path where the local <see cref="T:Duality.Editor.PackageManagement.PackageSetup"/> config file is located.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageManagerEnvironment.UpdateFilePath">
-            <summary>
-            [GET] The path where the <see cref="T:Duality.Editor.PackageManagement.PackageUpdateSchedule"/> file is located.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageManagerEnvironment.UpdaterExecFilePath">
-            <summary>
-            [GET] The path of the binary that will be executed in order to apply a pending
-            update as scheduled in the <see cref="T:Duality.Editor.PackageManagement.PackageUpdateSchedule"/> at the <see cref="P:Duality.Editor.PackageManagement.PackageManagerEnvironment.UpdateFilePath"/>.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageManagerEnvironment.TargetPluginPathRelative">
-            <summary>
-            [GET] The (<see cref="P:Duality.Editor.PackageManagement.PackageManagerEnvironment.RootPath"/>-)relative path where plugin package contents are copied to after installation.
-            See <see cref="P:Duality.Editor.PackageManagement.PackageManagerEnvironment.TargetPluginPath"/> for a non-relative version.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageManagerEnvironment.TargetSolutionPathRelative">
-            <summary>
-            [GET] The (<see cref="P:Duality.Editor.PackageManagement.PackageManagerEnvironment.RootPath"/>-)relative path of the source code solution file where source code 
-            project files from packages will be integrated after installation.
-            </summary>
-        </member>
-        <member name="T:Duality.Editor.PackageManagement.PackageUpdateSchedule">
-            <summary>
-            Describes the required operations to apply a previously performed package operation.
-            
-            The schedule is what's usually stored in a file at the <see cref="P:Duality.Editor.PackageManagement.PackageManagerEnvironment.UpdateFilePath"/>,
-            which is read and executed by the updater application.
-            </summary>
-        </member>
-        <member name="F:Duality.Editor.PackageManagement.PackageUpdateSchedule.CopyItem">
-            <summary>
-            Element name of copy file update instructions. See <see cref="M:Duality.Editor.PackageManagement.PackageUpdateSchedule.AppendCopyFile(System.String,System.String)"/>.
-            </summary>
-        </member>
-        <member name="F:Duality.Editor.PackageManagement.PackageUpdateSchedule.DeleteItem">
-            <summary>
-            Element name of delete file update instructions. See <see cref="M:Duality.Editor.PackageManagement.PackageUpdateSchedule.AppendDeleteFile(System.String)"/>.
-            </summary>
-        </member>
-        <member name="F:Duality.Editor.PackageManagement.PackageUpdateSchedule.IntegrateProjectItem">
-            <summary>
-            Element name of project integration update instructions. See <see cref="M:Duality.Editor.PackageManagement.PackageUpdateSchedule.AppendIntegrateProject(System.String,System.String,System.String)"/>.
-            </summary>
-        </member>
-        <member name="F:Duality.Editor.PackageManagement.PackageUpdateSchedule.SeparateProjectItem">
-            <summary>
-            Element name of project separation update instructions. See <see cref="M:Duality.Editor.PackageManagement.PackageUpdateSchedule.AppendSeparateProject(System.String,System.String)"/>.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageUpdateSchedule.Items">
-            <summary>
-            [GET] Enumerates all update instruction items in the schedule.
-            The type of each instruction can be derived from the element names,
-            but be aware that both names and attributes are an implementation
-            detail that can be subject to change in future versions.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageUpdateSchedule.AppendCopyFile(System.String,System.String)">
-            <summary>
-            Appends a copy file instruction to the update schedule.
-            </summary>
-            <param name="copySource"></param>
-            <param name="copyTarget"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageUpdateSchedule.AppendDeleteFile(System.String)">
-            <summary>
-            Appends a delete file instruction to the update schedule.
-            </summary>
-            <param name="deleteTarget"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageUpdateSchedule.AppendIntegrateProject(System.String,System.String,System.String)">
-            <summary>
-            Appends a project integration instruction to the update schedule.
-            This instruction type will make sure that the specified source code project file
-            is referenced in the Duality project's primary source code solution file.
-            </summary>
-            <param name="projectFile"></param>
-            <param name="solutionFile"></param>
-            <param name="pluginDirectory"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageUpdateSchedule.AppendSeparateProject(System.String,System.String)">
-            <summary>
-            Appends a project separation instruction to the update schedule.
-            This instruction type will make sure that the specified source code project file
-            is no longer referenced in the Duality project's primary source code solution file.
-            </summary>
-            <param name="projectFile"></param>
-            <param name="solutionFile"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageUpdateSchedule.ApplyUpdaterChanges(System.String)">
-            <summary>
-            Applies all changes that affect the Duality updater itself, which for that
-            reason can't be done by the updater. The applied items will be removed from
-            the schedule.
-            </summary>
-            <param name="updaterPath"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageUpdateSchedule.ApplyChanges(System.Collections.Generic.IEnumerable{System.Xml.Linq.XElement})">
-            <summary>
-            Applies a set of scheduled update instructions immediately and removes them from the schedule.
-            
-            Note that this method only supports copy and delete operations. More complex operations are only
-            implemented in the updater application, as this is the one usually performing them. This method
-            exists only for applying updates to the updater itself, as well as for testing purposes.
-            </summary>
-            <param name="items"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageUpdateSchedule.Save(System.String)">
-            <summary>
-            Saves the update schedule to the specified file path.
-            </summary>
-            <param name="updateFilePath"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageUpdateSchedule.Load(System.String)">
-            <summary>
-            Loads an existing update schedule from the specified file path.
-            </summary>
-            <param name="updateFilePath"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Duality.Editor.PackageManagement.PackageSetup">
-            <summary>
-            Describes the package setup that is required by a Duality project, including 
-            repository URLs, package Ids and versions. It is a data representation of what's
-            usually stored in the package config file.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageSetup.RepositoryUrls">
-            <summary>
-            [GET] A list of URLs to remote package repositories that will be used to pull packages from.
-            For convenience reasons, it is allowed to specify regular file paths instead of URLs when referring
-            to machine local repositories.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageSetup.IsFirstInstall">
-            <summary>
-            [GET / SET] Whether the next startup of the Duality editor will consider restoring packages
-            to be the very first installation. This affects how license agreement requirements are handled.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageSetup.Packages">
-            <summary>
-            [GET] A list of packages that are required by this project. If a package does not specify a
-            specific version, the latest available version will be installed.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageSetup.GetPackage(System.String)">
-            <summary>
-            Retrieves a local project package by its Id, ignoring version numbers.
-            Returns null if no such package is referenced.
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageSetup.GetPackage(System.String,System.Version)">
-            <summary>
-            Retrieves a local project package by its Id and version.
-            Returns null if no such package is referenced.
-            </summary>
-            <param name="id"></param>
-            <param name="version"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageSetup.GetPackage(Duality.Editor.PackageManagement.PackageName)">
-            <summary>
-            Retrieves a local project package by its name, optionally requiring a specific version number.
-            Returns null if no such package is referenced.
-            </summary>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageSetup.Populate(System.String)">
-            <summary>
-            Updates an existing <see cref="T:Duality.Editor.PackageManagement.PackageSetup"/> using information from the
-            config file at the specified path. Settings that are not specified in the
-            config file will remain as they were.
-            </summary>
-            <param name="configFilePath"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageSetup.Save(System.String)">
-            <summary>
-            Saves the <see cref="T:Duality.Editor.PackageManagement.PackageSetup"/> to a config file at the specified path.
-            </summary>
-            <param name="configFilePath"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageSetup.Load(System.String)">
-            <summary>
-            Loads an existing <see cref="T:Duality.Editor.PackageManagement.PackageSetup"/> from the config file at the
-            specified path.
-            </summary>
-            <param name="configFilePath"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageLicenseAgreementEventArgs.AcceptLicense">
-            <summary>
-            Marks the license as accepted. Only ever call this when the end user has seen and explicitly accepted the license terms.
-            </summary>
-        </member>
-        <member name="T:Duality.Editor.PackageManagement.LocalPackage">
-            <summary>
-            Describes a Duality package that is part of the local <see cref="T:Duality.Editor.PackageManagement.PackageSetup"/>.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.LocalPackage.Name">
-            <summary>
-            [GET] The name of the package, including ID and version number.
-            Note that a local package may be version-invariant to flag itself
-            for an update to the newest available version during package verify.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.LocalPackage.Id">
-            <summary>
-            [GET] The ID of the package.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.LocalPackage.Version">
-            <summary>
-            [GET] The version of the package. Can be null, in which case the
-            package will be treated as version-invariant.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.LocalPackage.Info">
-            <summary>
-            [GET] A <see cref="T:Duality.Editor.PackageManagement.PackageInfo"/> representing the locally installed
-            version of the package.
-            </summary>
-        </member>
-        <member name="T:Duality.Editor.PackageManagement.PackageManager">
-            <summary>
-            Allows to install, uninstall, update and query local and remote Duality packages.
-            </summary>
-        </member>
-        <member name="F:Duality.Editor.PackageManagement.PackageManager.DualityPackageNames">
-            <summary>
-            A list of package names that are considered "core" Duality packages.
-            If none of these show up anywhere in the deep dependency graph of a Duality package,
-            it will be assumed that dependencies are simply not specified properly.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageManager.IsPackageSyncRequired">
-            <summary>
-            [GET] Whether the local <see cref="T:Duality.Editor.PackageManagement.PackageSetup"/> and the actually installed packages
-            are currently out of sync.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageManager.LocalEnvironment">
-            <summary>
-            [GET] The local file system environment in which this <see cref="T:Duality.Editor.PackageManagement.PackageManager"/> operates.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.PackageManagement.PackageManager.LocalSetup">
-            <summary>
-            [GET / SET] A data class representing the local package setup. Do not change these 
-            values manually, but use <see cref="T:Duality.Editor.PackageManagement.PackageManager"/> API instead.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageManager.VerifyPackage(Duality.Editor.PackageManagement.LocalPackage)">
-            <summary>
-            Installs the specified package if it wasn't installed yet and synchronizes
-            the registered Duality package version number with the one that is present
-            in the local cache.
-            </summary>
-            <param name="localPackage"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageManager.UninstallNonRegisteredPackages">
-            <summary>
-            Uninstalls all Duality packages that are installed, but not registered. This
-            usually happens when a user manually edits the package config file and either
-            removes package entries explicitly, or changes their version numbers.
-            
-            Due to the nature of this operation, it is possible that package dependencies
-            are removed even though they might still be required by some installed packages.
-            To make sure this state doesn't persist, it is recommended to perform a package
-            verification step afterwards, which will re-install dependencies that might have
-            been accidentally removed.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageManager.InstallPackage(Duality.Editor.PackageManagement.PackageName)">
-            <summary>
-            Installs the specified package.
-            </summary>
-            <param name="packageName"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageManager.UninstallPackage(Duality.Editor.PackageManagement.PackageName)">
-            <summary>
-            Uninstalls the specified package.
-            </summary>
-            <param name="packageName"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageManager.CanUninstallPackage(Duality.Editor.PackageManagement.PackageName)">
-            <summary>
-            Determines whether the specified package can be uninstalled. Returns
-            false when other packages still depend on it.
-            </summary>
-            <param name="package"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageManager.UpdatePackage(Duality.Editor.PackageManagement.PackageName)">
-            <summary>
-            Updates the specified package to the latest available version.
-            </summary>
-            <param name="packageName"></param>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageManager.ApplyUpdate(System.Boolean)">
-            <summary>
-            Starts applying any pending package updates and returns true when it is required
-            to shut down the current editor instance in order to complete them.
-            </summary>
-            <param name="restartEditor">
-            Whether the current editor instance should be restarted after the update has been applied.
-            </param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageManager.ClearCache">
-            <summary>
-            Clears the internal cache for remote repository packages, allowing
-            to retrieve updated information about the latest available packages
-            and package versions.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageManager.GetLatestDualityPackages">
-            <summary>
-            Enumerates the latest versions of all available Duality packages from
-            the remote repository.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageManager.GetPackage(Duality.Editor.PackageManagement.PackageName)">
-            <summary>
-            Retrieves detailed information about the specified package from the
-            local or remote repository.
-            </summary>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageManager.GetUpdatablePackages">
-            <summary>
-            Enumerates all target packages for local installs that could be updated.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageManager.GetCompatibilityLevel(Duality.Editor.PackageManagement.PackageInfo)">
-            <summary>
-            Determines compatibility between the current package installs and the specified target package.
-            Works for both updates and new installs.
-            </summary>
-            <param name="target"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageManager.OrderByDependencies(System.Collections.Generic.IList{Duality.Editor.PackageManagement.PackageInfo})">
-            <summary>
-            Sorts the specified list of packages according to their dependencies, guaranteeing that no package
-            is listed before its dependencies. Use this to determine the order of batch updates and installs
-            to prevent conflicts from having different versions of the same packages.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.PackageManagement.PackageManager.OrderByDependencies(System.Collections.Generic.IList{Duality.Editor.PackageManagement.LocalPackage})">
-            <summary>
-            Sorts the specified list of packages according to their dependencies, guaranteeing that no package
-            is listed before its dependencies. Use this to determine the order of batch updates and installs
-            to prevent conflicts from having different versions of the same packages.
-            </summary>
-        </member>
         <member name="M:Duality.Editor.DualityEditorApp.GetEditorActions(System.Type,System.Collections.Generic.IEnumerable{System.Object},System.String)">
             <summary>
             Enumerates editor user actions that can be applied to objects of the specified type.
@@ -2800,6 +2304,88 @@
             Return the preferred icon image representation of the specified Type.
             </summary>
             <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.PackageManagement.PackageLicenseAgreementEventArgs.AcceptLicense">
+            <summary>
+            Marks the license as accepted. Only ever call this when the end user has seen and explicitly accepted the license terms.
+            </summary>
+        </member>
+        <member name="F:Duality.Editor.PackageManagement.PackageManager.DualityPackageNames">
+            <summary>
+            A list of package names that are considered "core" Duality packages.
+            If none of these show up anywhere in the deep dependency graph of a Duality package,
+            it will be assumed that dependencies are simply not specified properly.
+            </summary>
+        </member>
+        <member name="P:Duality.Editor.PackageManagement.PackageManager.LocalPackageStoreDirectory">
+            <summary>
+            [GET] The local directory where packages are installed and stored prior to applying the update.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.PackageManagement.PackageManager.VerifyPackage(Duality.Editor.PackageManagement.LocalPackage)">
+            <summary>
+            Installs the specified package if it wasn't installed yet and synchronizes
+            the registered Duality package version number with the one that is present
+            in the local cache.
+            </summary>
+            <param name="package"></param>
+        </member>
+        <member name="M:Duality.Editor.PackageManagement.PackageManager.UninstallNonRegisteredPackages">
+            <summary>
+            Uninstalls all Duality packages that are installed, but not registered. This
+            usually happens when a user manually edits the package config file and either
+            removes package entries explicitly, or changes their version numbers.
+            
+            Due to the nature of this operation, it is possible that package dependencies
+            are removed even though they might still be required by some installed packages.
+            To make sure this state doesn't persist, it is recommended to perform a package
+            verification step afterwards, which will re-install dependencies that might have
+            been accidentally removed.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.PackageManagement.PackageManager.GetUpdatablePackages">
+            <summary>
+            Enumerates all target packages for local installs that could be updated.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.PackageManagement.PackageManager.GetCompatibilityLevel(Duality.Editor.PackageManagement.PackageInfo)">
+            <summary>
+            Determines compatibility between the current package installs and the specified target package.
+            Works for both updates and new installs.
+            </summary>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.PackageManagement.PackageManager.OrderByDependencies(System.Collections.Generic.IList{Duality.Editor.PackageManagement.PackageInfo})">
+            <summary>
+            Sorts the specified list of packages according to their dependencies, guaranteeing that no package
+            is listed before its dependencies. Use this to determine the order of batch updates and installs
+            to prevent conflicts from having different versions of the same packages.
+            </summary>
+        </member>
+        <member name="M:Duality.Editor.PackageManagement.PackageManager.GetDeepDependencies(System.Collections.Generic.IEnumerable{Duality.Editor.PackageManagement.PackageInfo})">
+            <summary>
+            Enumerates the complete dependency tree of the specified packages.
+            </summary>
+            <param name="package"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.PackageManagement.PackageManager.GetDeepDependencyCount(System.Collections.Generic.IEnumerable{Duality.Editor.PackageManagement.PackageInfo})">
+            <summary>
+            Determines the number of deep dependencies for each package in the specified collection.
+            </summary>
+            <param name="packages"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Duality.Editor.PackageManagement.PackageManager.GetDeepDependencyCount(Duality.Editor.PackageManagement.PackageInfo,System.Collections.Generic.Dictionary{Duality.Editor.PackageManagement.PackageInfo,System.Int32},System.Collections.Generic.Dictionary{Duality.Editor.PackageManagement.PackageName,Duality.Editor.PackageManagement.PackageInfo})">
+            <summary>
+            Determines the number of deep dependencies for the specified package.
+            </summary>
+            <param name="package"></param>
+            <param name="deepCount"></param>
+            <param name="resolver"></param>
             <returns></returns>
         </member>
         <member name="M:Duality.Editor.ExtMethodsControl.GetHoveredToolStripItem(System.Windows.Forms.Control,System.Drawing.Point,System.Boolean@)">

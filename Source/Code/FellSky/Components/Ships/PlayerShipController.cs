@@ -55,11 +55,11 @@ namespace FellSky.Components.Ships
 
             ControlledShip.IsBoosting = keyboard.KeyPressed(Boost);
             if (keyboard.KeyPressed(TurnCCW))
-                ControlledShip.TurnDirection = Rotation.CCW;
+                ControlledShip.DesiredTorque = -ControlledShip.TurnSpeed;
             else if (keyboard.KeyPressed(TurnCW))
-                ControlledShip.TurnDirection = Rotation.CW;
+                ControlledShip.DesiredTorque = ControlledShip.TurnSpeed;
             else
-                ControlledShip.TurnDirection = Rotation.None;
+                ControlledShip.DesiredTorque = 0;
         }
 
         void ICmpInitializable.OnInit(InitContext context)

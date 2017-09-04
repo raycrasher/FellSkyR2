@@ -3,4 +3,14 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartAction>Program</StartAction>
+    <StartProgram>D:\Projects\FellSky\DualityLauncher.exe</StartProgram>
+    <StartWorkingDirectory>D:\Projects\FellSky\</StartWorkingDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <StartAction>Program</StartAction>
+    <StartProgram>D:\Projects\FellSky\DualityLauncher.exe</StartProgram>
+    <StartWorkingDirectory>D:\Projects\FellSky\</StartWorkingDirectory>
+  </PropertyGroup>
 </Project>

@@ -31,8 +31,7 @@ namespace FellSky.Events
             switch (scope)
             {
                 case EventScope.Object:
-                    var cmp = obj.GetComponent<IEventHandler<T>>();
-                    cmp?.HandleEvent(source, data);
+                    obj.IterateComponents<IEventHandler<T>>(c=>c.HandleEvent(source, data));                    
                     break;
                 case EventScope.Children:
                     foreach (var cmp2 in obj.GetComponentsInChildren<IEventHandler<T>>())

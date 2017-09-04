@@ -18,6 +18,7 @@ namespace FellSky.Components.Ships
         private List<ShipWeapon> _weapons;
         private ColorRgba _baseColor = new ColorRgba(222,180,180);
         private ColorRgba _trimColor = new ColorRgba(249, 216, 155);
+        private float _desiredTorque;
 
 
         #region Properties
@@ -62,7 +63,9 @@ namespace FellSky.Components.Ships
 
         // control parameters
         public bool IsBoosting { get; set; } = false;
-        public Rotation TurnDirection { get; set; } = Rotation.None;
+        public Rotation TurnDirection {
+            get => DesiredTorque < 0 ? Rotation.CCW : DesiredTorque > 0 ? Rotation.CW : Rotation.None;
+        }
 
         /// <summary>
         /// The thrust vector for the ship, in worldspace.
@@ -88,6 +91,15 @@ namespace FellSky.Components.Ships
         }
         public Vector2 Acceleration { get; private set; }
         public Vector2 CurrentDirection => GameObj.Transform.GetWorldVector(Vector2.UnitX);
+
+        public float DesiredTorque {
+            get => _desiredTorque;
+            set {
+                if (float.IsNaN(value))
+                    throw new InvalidOperationException();
+                _desiredTorque = value;
+            }
+        }
 
         #endregion
 
@@ -137,7 +149,10 @@ namespace FellSky.Components.Ships
 
             Acceleration = force;
 
-            switch (TurnDirection)
+            _rigidBody.ApplyLocalForce(MathF.Clamp(DesiredTorque, -TurnSpeed,TurnSpeed));
+
+            /*
+             switch (TurnDirection)
             {
                 case Rotation.CCW:
                     rigidBody.ApplyLocalForce(-TurnSpeed * 40);
@@ -145,7 +160,7 @@ namespace FellSky.Components.Ships
                 case Rotation.CW:
                     rigidBody.ApplyLocalForce(TurnSpeed * 40);
                     break;
-            }
+            }*/
         }
 
         void IEventHandler<DamageEvent>.HandleEvent(object source, DamageEvent data)

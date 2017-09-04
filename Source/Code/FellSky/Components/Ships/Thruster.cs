@@ -10,6 +10,8 @@ namespace FellSky.Components.Ships
     [Duality.Editor.EditorHintCategory("Ship")]
     public class Thruster : Component, ICmpUpdatable, ICmpEditorUpdatable
     {
+        public static bool Editor_ShowAsThrusting { get; set; } = false;
+
         public Vector2 ScaleIdle { get; set; }
         public Vector2 ScaleThrust { get; set; }
         public Vector2 ScaleBoost { get; set; }
@@ -66,6 +68,10 @@ namespace FellSky.Components.Ships
                     _isThrusting = false;
 
             }
+
+            if(DualityApp.ExecEnvironment == DualityApp.ExecutionEnvironment.Editor)
+                _isThrusting = Editor_ShowAsThrusting;
+
             //RampUpTime = 0.4;
             //RampDownTime = 0.4f;
             var deltaTime = Time.TimeMult * Time.SPFMult;

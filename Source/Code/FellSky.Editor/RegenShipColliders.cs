@@ -27,7 +27,7 @@ namespace FellSky.Editor
                 body.AngularDamping = 0.9f;
             }
 
-            foreach(var renderer in obj.GameObj.GetComponentsInChildren<AdvSpriteRenderer>())
+            foreach(var renderer in obj.GameObj.GetComponentsInChildren<AdvSpriteRenderer>().Where(r=>r.GameObj.GetComponent<Hull>()!=null))
             {
                 var shape = renderer.Sprite.Res?.Shape;
                 var xform = renderer.GameObj.Transform;
@@ -43,7 +43,7 @@ namespace FellSky.Editor
                         shape = ShipLoader.CloneAndTransformShape(circle, xform, renderer.Sprite.Res.UVRect.Size, renderer.FlipMode);
                         break;
                 }
-                renderer.GameObj.AddComponent<Hull>();
+                body.AddShape(shape);
             }
         }
     }

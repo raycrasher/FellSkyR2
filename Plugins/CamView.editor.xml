@@ -34,11 +34,6 @@
             Creates a new chain shape in the selected <see cref="T:Duality.Components.Physics.RigidBody"/>.
             </summary>
         </member>
-        <member name="T:Duality.Editor.Plugins.CamView.CamViewStates.VertexRigidBodyEditorTool">
-            <summary>
-            A tool that represents performing a move vertex operation on the edited <see cref="T:Duality.Components.Physics.RigidBody"/>.
-            </summary>
-        </member>
         <member name="T:Duality.Editor.Plugins.CamView.CamViewStates.LoopRigidBodyEditorTool">
             <summary>
             Creates a new loop shape in the selected <see cref="T:Duality.Components.Physics.RigidBody"/>.
@@ -64,25 +59,11 @@
         <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveBodyPos">
             <summary>
             [GET] The cursor-hovered local position relative to the current <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveBody"/>.
-            Unlike <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.HoveredBodyPos"/>, this property will take into account snap-to-grid and axis lock constraints.
             </summary>
         </member>
         <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveWorldPos">
             <summary>
             [GET] The cursor-hovered world position on the Z-plane of the current <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveBody"/>.
-            Unlike <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.HoveredWorldPos"/>, this property will take into account snap-to-grid and axis lock constraints.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.HoveredBodyPos">
-            <summary>
-            [GET] The cursor-hovered local position relative to the current <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveBody"/>.
-            Unlike <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveBodyPos"/>, this property will ignore snap-to-grid and axis lock constraints.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.HoveredWorldPos">
-            <summary>
-            [GET] The cursor-hovered world position on the Z-plane of the current <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveBody"/>.
-            Unlike <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.ActiveBodyPos"/>, this property will ignore snap-to-grid and axis lock constraints.
             </summary>
         </member>
         <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.LockedWorldPos">
@@ -94,16 +75,6 @@
         <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.IsActionKeyPressed">
             <summary>
             [GET] Returns whether the key that was used to start this action is still pressed.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.BgColor">
-            <summary>
-            [GET] The preferred background color to be used when rendering a tool overlay.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.FgColor">
-            <summary>
-            [GET] The preferred foreground color to be used when rendering a tool overlay.
             </summary>
         </member>
         <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.EndToolAction">
@@ -121,43 +92,6 @@
             <param name="shapes"></param>
             <param name="mode"></param>
         </member>
-        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.SelectTool(System.Type)">
-            <summary>
-            Selects the tool of the specified type.
-            </summary>
-            <param name="toolType"></param>
-        </member>
-        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.IsCoordInView(Duality.Vector3,System.Single)">
-            <summary>
-            Determines whether a world space with the given radius is visible in the
-            <see cref="T:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorCamViewState"/> view.
-            </summary>
-            <param name="worldPos"></param>
-            <param name="radius"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.GetScaleAtZ(System.Single)">
-            <summary>
-            Determins the view scale at a given world space Z position.
-            </summary>
-            <param name="z"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.GetSpaceCoord(Duality.Vector3)">
-            <summary>
-            Determins the world space position of a given point in screen space.
-            The Z coordinate of that point will be evaluated as the assumed Z position.
-            </summary>
-            <param name="screenCoord"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.IRigidBodyEditorToolEnvironment.GetScreenCoord(Duality.Vector3)">
-            <summary>
-            Determines the screen space position of a given point in world space.
-            </summary>
-            <param name="spaceCoord"></param>
-            <returns></returns>
-        </member>
         <member name="T:Duality.Editor.Plugins.CamView.CamViewStates.CircleRigidBodyEditorTool">
             <summary>
             Creates a new circle shape in the selected <see cref="T:Duality.Components.Physics.RigidBody"/>.
@@ -165,8 +99,7 @@
         </member>
         <member name="T:Duality.Editor.Plugins.CamView.CamViewStates.NoRigidBodyEditorTool">
             <summary>
-            A tool that allows you to select and edit <see cref="T:Duality.Components.Physics.ShapeInfo"/> objects using
-            the regular move / rotate / scale actions that you already know from the Scene Editor.
+            A dummy tool that represents not performing any operation on the edited <see cref="T:Duality.Components.Physics.RigidBody"/>.
             </summary>
         </member>
         <member name="T:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool">
@@ -221,30 +154,9 @@
             e.g. whether it can perform a meaningful action on the selected <see cref="T:Duality.Components.Physics.RigidBody"/>.
             </summary>
         </member>
-        <member name="P:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.IsHoveringAction">
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.BeginAction">
             <summary>
-            [GET] Whether this tool, while selected, indicates that there is an action that
-            can potentially be performed at the current mouse position.
-            </summary>
-        </member>
-        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.GetActionText">
-            <summary>
-            While performing a continuous operation, this method can provide an optional
-            action text that will be displayed in the status area of the <see cref="T:Duality.Components.Physics.RigidBody"/> editor.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.CanBeginAction(System.Windows.Forms.MouseButtons)">
-            <summary>
-            Checks whether this tool can start a continuous operation given the specified
-            user input and environment state.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.BeginAction(System.Windows.Forms.MouseButtons)">
-            <summary>
-            Attempts to begin a continuous operation with this tool. Returns false when no
-            operation is possible or associated with the specified mouse button.
+            Begins a continuous operation with this tool. Usually invoked via left-click.
             </summary>
         </member>
         <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.UpdateAction">
@@ -257,31 +169,17 @@
             Ends a previously started continuous operation of this tool.
             </summary>
         </member>
-        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.OnActionKeyPressed(System.Windows.Forms.MouseButtons)">
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.OnActionKeyPressed">
             <summary>
             Called when the action key has been pressed after the action has already begun.
             </summary>
-            <param name="mouseButton"></param>
         </member>
-        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.OnActionKeyReleased(System.Windows.Forms.MouseButtons)">
+        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.GetActionText">
             <summary>
-            Called when the action key has been released after the action has already begun.
+            While performing a continuous operation, this method can provide an optional
+            action text that will be displayed in the status area of the <see cref="T:Duality.Components.Physics.RigidBody"/> editor.
             </summary>
-            <param name="mouseButton"></param>
-        </member>
-        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.OnWorldOverlayDrawcalls(Duality.Drawing.Canvas)">
-            <summary>
-            Called when the tool is selected and allowed to draw an overlay inside the <see cref="T:Duality.Editor.Plugins.CamView.CamView"/>.
-            </summary>
-            <param name="canvas"></param>
-        </member>
-        <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.OnMouseMove">
-            <summary>
-            Called when the tool is selected and allowed to handle mouse movement events. Unlike <see cref="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.UpdateAction"/>,
-            this method will also be called while the tool is not performing any continuous action, allowing it to
-            update its internal state that may then be used to make <see cref="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.CanBeginAction(System.Windows.Forms.MouseButtons)"/> and <see cref="P:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.IsHoveringAction"/>
-            more efficient.
-            </summary>
+            <returns></returns>
         </member>
         <member name="M:Duality.Editor.Plugins.CamView.CamViewStates.RigidBodyEditorTool.InitToolButton">
             <summary>
@@ -703,22 +601,12 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
-        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.CursorArrowEditVertices">
-            <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
-            </summary>
-        </member>
         <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.IconCmpCircleCollider">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.IconCmpEdgeCollider">
-            <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.IconCmpEditVertices">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
@@ -736,11 +624,6 @@
         <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.IconEye">
             <summary>
               Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.IconShapeSelect">
-            <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.MenuItemDesc_CantRemoveComponent">
@@ -793,16 +676,6 @@
               Looks up a localized string similar to Create Polygon Shape.
             </summary>
         </member>
-        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.RigidBodyCamViewState_ItemName_EditShapes">
-            <summary>
-              Looks up a localized string similar to Select / Edit Shapes.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.RigidBodyCamViewState_ItemName_EditVertices">
-            <summary>
-              Looks up a localized string similar to Edit Vertices.
-            </summary>
-        </member>
         <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.RigidBodyCamViewState_SelBodyName">
             <summary>
               Looks up a localized string similar to RigidBody.
@@ -838,11 +711,6 @@
               Looks up a localized string similar to Create {0} Shapes.
             </summary>
         </member>
-        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_CreateRigidBodyShapeVertex">
-            <summary>
-              Looks up a localized string similar to Create Vertex.
-            </summary>
-        </member>
         <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_DeleteRigidBodyShape">
             <summary>
               Looks up a localized string similar to Delete {0}.
@@ -851,11 +719,6 @@
         <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_DeleteRigidBodyShapeMulti">
             <summary>
               Looks up a localized string similar to Delete {0} Shapes.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_DeleteRigidBodyShapeVertex">
-            <summary>
-              Looks up a localized string similar to Delete Vertex.
             </summary>
         </member>
         <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_DropGameObjectInScene">
@@ -876,11 +739,6 @@
         <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_MoveCamViewObjMulti">
             <summary>
               Looks up a localized string similar to Move {0} Objects.
-            </summary>
-        </member>
-        <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_MoveRigidBodyShapeVertex">
-            <summary>
-              Looks up a localized string similar to Move Vertex.
             </summary>
         </member>
         <member name="P:Duality.Editor.Plugins.CamView.Properties.CamViewRes.UndoRedo_RotateCamViewObj">

@@ -20,6 +20,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Duality">
@@ -39,6 +42,10 @@
     <Reference Include="FarseerDuality, Version=4.1.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\FarseerDuality.dll</HintPath>
+    </Reference>
+    <Reference Include="LibRocketNet, Version=1.0.5968.23162, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\LibRocketNet.dll</HintPath>
     </Reference>
     <Reference Include="Steer2d">
       <HintPath>..\..\..\Plugins\Steer2d.dll</HintPath>
@@ -81,8 +88,14 @@
     <Compile Include="Events\DeathEvent.cs" />
     <Compile Include="Events\IEvent.cs" />
     <Compile Include="Events\ISensorEvent.cs" />
+    <Compile Include="FellSkyAppData.cs" />
     <Compile Include="FellSkyCorePlugin.cs" />
     <Compile Include="Graphics\VertexFormats.cs" />
+    <Compile Include="Gui\FontDef.cs" />
+    <Compile Include="Gui\GuiDocument.cs" />
+    <Compile Include="Gui\GuiCore.cs" />
+    <Compile Include="Gui\LRDRenderInterface.cs" />
+    <Compile Include="Gui\LRDSystemInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AmmoType.cs" />
     <Compile Include="Resources\ItemType.cs" />

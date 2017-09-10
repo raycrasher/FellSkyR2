@@ -8,6 +8,7 @@ using AdamsLair.WinForms.ItemModels;
 using Duality.Editor.Properties;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
+using Duality;
 
 namespace FellSky.Editor
 {
@@ -27,6 +28,8 @@ namespace FellSky.Editor
         protected override void InitPlugin(MainForm main)
         {
             base.InitPlugin(main);
+            Gui.GuiCore.InitializeGui();
+
             InitMenuItems(main);
         }
 
@@ -38,6 +41,12 @@ namespace FellSky.Editor
                 Name = "Sprite Viewer",
                 ActionHandler = (o, e) => RequestSpriteEditorView()
             });
+            viewItem.AddItem(new MenuModelItem
+            {
+                Name = "Librocket Debugger",
+                ActionHandler = (o, e) => LibRocketNet.Core.DebugMode = !LibRocketNet.Core.DebugMode
+            });
+
             var spriteMenu = new MenuModelItem
             {
                 Name = "Sprite"

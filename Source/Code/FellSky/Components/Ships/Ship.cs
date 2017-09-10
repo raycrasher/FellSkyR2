@@ -149,7 +149,7 @@ namespace FellSky.Components.Ships
 
             Acceleration = force;
 
-            _rigidBody.ApplyLocalForce(MathF.Clamp(DesiredTorque, -TurnSpeed,TurnSpeed));
+            rigidBody.ApplyLocalForce(MathF.Clamp(DesiredTorque, -TurnSpeed,TurnSpeed));
 
             /*
              switch (TurnDirection)

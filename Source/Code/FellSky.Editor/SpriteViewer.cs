@@ -93,6 +93,7 @@ namespace FellSky.Editor
                 toolTip1.SetToolTip(btn, sprite.Name);
             }
             _tabLoadStatus[tabIndex] = true;
+            Log.Editor.Write("SpriteViewer tab {0} success", tabIndex);
         }
 
         private void AddSprite(ContentRef<Sprite> sprite)

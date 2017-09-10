@@ -8,5 +8,10 @@ namespace FellSky
 {
     public class FellSkyCorePlugin: Duality.CorePlugin
     {
+        protected override void InitPlugin()
+        {
+            Gui.GuiCore.InitializeGui();
+            base.InitPlugin();
+        }
     }
 }

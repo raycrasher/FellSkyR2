@@ -51,13 +51,13 @@ namespace FellSky.Components.Ships
             if(turnVector.LengthSquared > 0)
             {
                 var fps = Time.Fps <= 0 ? 60 : Time.Fps;
-                float desiredAngle = turnVector.Angle;
+                float desiredAngle = MathF.NormalizeAngle(turnVector.Angle);
                 //var angle = Utilities.FindAngleBetweenTwoVectors(ship.CurrentDirection, turnVector);
                 float nextAngle = ship.GameObj.Transform.Angle + body.AngularVelocity / fps;
                 float totalRotation = desiredAngle - nextAngle;
 
-                while (totalRotation < -MathF.Pi) totalRotation += MathF.TwoPi;
-                while (totalRotation > MathF.Pi) totalRotation -= MathF.TwoPi;
+                //while (totalRotation < -MathF.Pi) totalRotation += MathF.TwoPi;
+                //while (totalRotation > MathF.Pi) totalRotation -= MathF.TwoPi;
 
 
                 float desiredAngularVelocity = totalRotation * fps;
